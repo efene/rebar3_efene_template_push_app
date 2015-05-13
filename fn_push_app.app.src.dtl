@@ -1,0 +1,14 @@
+{application, {{name}}, [
+    {description, "WebSocket, Event Stream and COMET {{name}} Application."},
+    {vsn, "1"},
+    {modules, []},
+    {registered, [{{name}}_sup]},
+    {applications, [
+        kernel,
+        stdlib,
+        cowboy,
+        bullet
+    ]},
+    {mod, { {{name}}_app, []}},
+    {env, []}
+]}.

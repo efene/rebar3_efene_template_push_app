@@ -1,0 +1,12 @@
+{description, "Efene REST Application"}.
+{variables, [
+    {name, "myapp", "Name of the application"}
+]}.
+{template, "fn_push_app.app.src.dtl", "src/{{name}}.app.src"}.
+{template, "fn_push_app_sup.fn.dtl", "src/{{name}}_sup.fn"}.
+{template, "fn_push_app_app.fn.dtl", "src/{{name}}_app.fn"}.
+{template, "fn_push_app_handler.fn.dtl", "src/{{name}}_handler.fn"}.
+{template, "fn_push_app_listen_handler.fn.dtl", "src/{{name}}_listen_handler.fn"}.
+{template, "fn_push_app_rebar.config.dtl", "rebar.config"}.
+{template, "fn_push_app_gitignore.dtl", ".gitignore"}.
+{template, "fn_push_app_README.rst.dtl", "README.rst"}.

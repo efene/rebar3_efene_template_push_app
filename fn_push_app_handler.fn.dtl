@@ -1,0 +1,24 @@
+
+fn init @public
+  case Req, Opts:
+    (cowboy_rest, Req, Opts)
+end
+
+fn allowed_methods @public
+  case Req, State:
+    (['POST'], Req, State)
+end
+
+fn content_types_accepted @public
+  case Req, State:
+    ([(('application', 'json', `*`), from_json)], Req, State)
+end
+
+fn from_json @public
+  case Req, State:
+    (ok, BodyRaw, Req1) = cowboy_req.body(Req)
+    Body = jsx.decode(BodyRaw)
+    io.format("got ~p~n", [Body])
+
+    (true, Req1, State)
+end

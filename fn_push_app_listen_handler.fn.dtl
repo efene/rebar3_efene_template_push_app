@@ -1,0 +1,22 @@
+
+fn init @public
+  case _Transport, Req, Opts, Active:
+    State = {active: Active, opts: Opts}
+    (ok, Req, State)
+end
+
+fn stream @public
+  case Data, Req, State:
+    (reply, Data, Req, State)
+end
+
+
+fn info @public
+  case Data, Req, State:
+    (reply, Data, Req, State)
+end
+
+fn terminate @public
+  case _Req, _State:
+    ok
+end
