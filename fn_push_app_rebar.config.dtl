@@ -1,11 +1,19 @@
-{erl_opts, [debug_info]}.
 {deps, [
-    {cowboy, {git, "https://github.com/ninenines/cowboy.git", {tag, "1.0.1"}}},
+    {lager, {git, "https://github.com/basho/lager.git", {tag, "3.0.1"}}},
+    {cowboy, {git, "https://github.com/ninenines/cowboy.git", {tag, "1.0.3"}}},
     {bullet, {git, "https://github.com/extend/bullet.git", {branch, "master"}}},
     {jsx, {git, "https://github.com/talentdeficit/jsx.git", {tag, "v2.5.2"}}}
 ]}.
 {plugins, [
     {rebar3_efene_compile, {git, "https://github.com/efene/rebar3_efene_compile.git", {branch, "master"}}},
-    {rebar3_efene_ct, {git, "https://github.com/efene/rebar3_efene_ct.git", {branch, "master"}}}
+    {rebar3_efene_ct, {git, "https://github.com/efene/rebar3_efene_ct.git", {branch, "master"}}},
+    {rebar3_run, ".*", {git, "git://github.com/tsloughter/rebar3_run.git", {branch, "master"}}}
 ]}.
 {provider_hooks, [{pre, [{ct, {efene, ct}}, {compile, {efene, compile}}]}]}.
+
+{relx, [{release, { {{name}}, "0.0.1"}, ["{{name}}"]},
+        {dev_mode, true},
+        {include_erts, false},
+        {extended_start_script, true}]}.
+
+{erl_opts, [debug_info, {parse_transform, lager_transform}]}.
